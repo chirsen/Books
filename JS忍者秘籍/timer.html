@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>timer</title>
+</head>
+
+<body>
+    <table>
+        <tbody>
+        </tbody>
+    </table>
+    <div id="box" style="position: absolute;">hello</div>
+    <script>
+    var tbody = document.getElementsByTagName("tbody")[0];
+    /* 长循环
+    for(var i = 0; i < 20000; i++){
+    	var tr = document.createElement("tr");
+    	for(var j = 0; j < 6; j++){
+    		var td = document.createElement("td");
+    		td.appendChild(document.createTextNode(i+","+j));
+    		tr.appendChild(td);
+    	}
+    	tbody.appendChild(tr);
+    }*/
+	
+	/* 使用定时器，将长循环切割，方便其他操作不被阻塞
+    var rowCount = 20000;
+    var dividInto = 4;
+    var chunkSize = rowCount / dividInto;
+    var iteration = 0;
+
+    setTimeout(function generateRows() {
+        var base = chunkSize * iteration;
+        for (var i = 0; i < chunkSize; i++) {
+            var tr = document.createElement("tr");
+            for (var j = 0; j < 6; j++) {
+                var td = document.createElement("td");
+                td.appendChild(document.createTextNode( (i + base) + "," + j));
+                tr.appendChild(td);
+            }
+            tbody.appendChild(tr);
+        }
+        console.log(iteration);
+        iteration++;
+        if(iteration < dividInto){
+        	setTimeout(generateRows, 0);
+        }
+    }, 0);*/
+
+    /*一个中央定时器
+    var timers = {
+    	timerID : 0,
+    	timers:[],
+    	add:function(fn){
+    		this.timers.push(fn);
+    	},
+    	start:function(){
+    		if(this.timerID) return;
+    		(function runNext(){
+    			if(timers.timers.length > 0){//间隔40ms后，每个函数同时执行一遍
+    				for(var i = 0, len = timers.timers.length; i < len; i++){
+    					if(timers.timers[i]() === false){
+    						timers.timers.splice(i, 1);
+    						i--;
+    					}
+    				}
+    				timers.timerID = setTimeout(runNext, 40);
+    			}
+    		})();
+    	},
+    	stop:function(){
+    		clearTimeout(this.timerID);
+    		this.timerID = 0;
+    	}
+    };
+
+    var box = document.getElementById("box"), x = 0, y = 0;
+    timers.add(function(){
+    	box.style.left = x + "px";
+    	x += 10;
+    	if(x > 500) return false;
+    });
+    timers.add(function(){
+    	box.style.top = y + "px";
+    	y+=10;
+    	if(y > 500) return false;
+    });
+
+    timers.start();
+    */
+    </script>
+</body>
+
+</html>
