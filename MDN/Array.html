@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Array(功能不阐述)</title>
+    <style>
+    table {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        width: 100%;
+        border-collapse: collapse;
+        border-right: solid 1px #eee;
+    }
+    
+    th {
+        height: 60px;
+        border-left: solid 1px #eee;
+    }
+    
+    td {
+        height: 45px;
+        text-align: center;
+        border-left: solid 1px #eee;
+        border-top: solid 1px #eee;
+        font-size: 12px;
+    }
+    
+    tr:nth-child(2n) {
+        background-color: #EAF2D3;
+    }
+    
+    thead {
+        background-color: #A7C942;
+        color: #fff;
+    }
+    
+    tr > td:nth-child(1) {
+        width: 100px;
+        font-size: 16px;
+    }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>名称</th>
+                <th>传入参数</th>
+                <th>返回值</th>
+                <th>兼容</th>
+                <th>注意</th>
+                <th>是否改变数组</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>concat</td>
+                <td>n个数组或者非数组</td>
+                <td>新的Array实例</td>
+                <td> >= ie6</td>
+                <td>对象引用会直接复制引用到新数组</td>
+                <td>否</td>
+            </tr>
+            <tr>
+                <td>join</td>
+                <td>(separator)</td>
+                <td>字符串</td>
+                <td>ie6</td>
+                <td>默认连接符：",", 未赋值的，表现为""</td>
+                <td>否</td>
+            </tr>
+            <tr>
+                <td>every</td>
+                <td>(callback(element, index, arr), thisArg:callback执行时的this值，不指定的话，strict为undefined， 否则为全局)</td>
+                <td>bool值</td>
+                <td> >=ie9 </td>
+                <td> 被删除和从未赋值的元素不会被访问，访问的是调用那一瞬间的快照 </td>
+                <td>否</td>
+            </tr>
+            <tr>
+                <td>some</td>
+                <td>(callback(element, index, array){}[,thisArg])</td>
+                <td>bool值</td>
+                <td>ie9</td>
+                <td>同上</td>
+                <td>否</td>
+            </tr>
+            <tr>
+                <td>filter</td>
+                <td>同上</td>
+                <td>返回新的Array实例</td>
+                <td>ie9</td>
+                <td>同上</td>
+                <td>否</td>
+            </tr>
+            <tr>
+                <td>forEach</td>
+                <td>同上</td>
+                <td>返回新的Array实例</td>
+                <td>ie9</td>
+                <td>同上+没有办法中止或者跳出 forEach 循环，除了抛出一个异常。</td>
+                <td>否</td>
+            </tr>
+            <tr>
+                <td>map</td>
+                <td>(callback(element, index, arr), thisArg:callback执行时的this值，不指定的话，strict为undefined， 否则为全局)</td>
+                <td>新的Array实例</td>
+                <td>ie9</td>
+                <td>不修改数组本身，不会访问未赋值和删除的元素，访问的是快照</td>
+                <td>否</td>
+            </tr>
+            <tr>
+                <td>indexOf</td>
+                <td>(value, startIndex)</td>
+                <td>value第一次出现的位置</td>
+                <td>ie9</td>
+                <td>未找到返回-1，startIndex为负数，表示从个倒数第几个开始</td>
+                <td>否</td>
+            </tr>
+            <tr>
+                <td>pop</td>
+                <td>无</td>
+                <td>被删除的元素</td>
+                <td>ie6</td>
+                <td>通用，可用call和apply调用，会改变原数组</td>
+                <td>是</td>
+            </tr>
+            <tr>
+                <td>push</td>
+                <td>(elementN,)</td>
+                <td>新的length</td>
+                <td>ie6</td>
+                <td>会改变原数组</td>
+                <td>是</td>
+            </tr>
+            <tr>
+                <td>shift</td>
+                <td>无</td>
+                <td>被删除的元素</td>
+                <td>ie6</td>
+                <td>改变原数组，可被用于对象，如果该对象没有length属性，将添加值为0的length</td>
+                <td>是</td>
+            </tr>
+            <tr>
+                <td>unshift</td>
+                <td>(element1, ..., elementN)</td>
+                <td>该数组的length</td>
+                <td>ie6</td>
+                <td></td>
+                <td>是</td>
+            </tr>
+            <tr>
+                <td>reverse</td>
+                <td>无</td>
+                <td>颠倒后的数组</td>
+                <td>ie6</td>
+                <td>会改变原始数组</td>
+                <td>是</td>
+            </tr>
+            <tr>
+                <td>sort</td>
+                <td>([compareFunction(a, b)])</td>
+                <td>排好序的数组</td>
+                <td>ie</td>
+                <td>改变数组，默认Unicode位点排序</td>
+                <td>是</td>
+            </tr>
+            <tr>
+                <td>splice</td>
+                <td>(start,deleteCount[, itemN...])</td>
+                <td>被删除的元素组成的数组</td>
+                <td>ie6</td>
+                <td>改变数组</td>
+                <td>是</td>
+            </tr>
+            <tr>
+                <td>slice</td>
+                <td>(begin[, end])</td>
+                <td>含有提取元素的新数组</td>
+                <td>ie6</td>
+                <td>ie8- end不能为空</td>
+                <td>否</td>
+            </tr>
+            <tr>
+                <td>reduce</td>
+                <td>(callback(pre, cur, index, arry){}, initialValue)</td>
+                <td>函数累计处理的结果</td>
+                <td>ie9</td>
+                <td>数组为空，且没有initialValue -> TypeError</td>
+                <td>否</td>
+            </tr>
+            <tr>
+                <td>reduceRight</td>
+                <td>(callback(pre, cur, index, arry){}, initialValue)</td>
+                <td>函数累计处理的结果</td>
+                <td>ie9</td>
+                <td>数组为空，且没有initialValue -> TypeError</td>
+                <td>否</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
