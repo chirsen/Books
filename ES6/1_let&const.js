@@ -16,7 +16,6 @@
  * 
  */
 
-/*
 //code 1_3
 let temp = 0;
 {
@@ -35,10 +34,11 @@ PI = 3.14159; //报错
 obj.name = "hello";// 不报错
 obj = {}; // 报错
 
-*/
+
 
 //code 3
 //es5：i'm inside
+//es6 报错
 function f() { console.log("i'm outer"); }
 (function () {
     if (false) {
