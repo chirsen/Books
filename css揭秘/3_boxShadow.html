@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>多重边框（内外边框）</title>
+    <style>
+        .wrap{
+            margin: 100px;
+            height: 300px;
+            width: 300px;
+            background: #aaa;
+            box-shadow: 0px 0px 0px 10px #655 inset,
+                        0px 0px 0px 20px deeppink inset,
+                        0px 0px 0px 30px red inset;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap" onclick="show();">
+    </div>
+    <script>
+    //元素内点击有效
+    function show(){
+        console.log("s");        
+    }
+    </script>
+</body>
+
+</html>

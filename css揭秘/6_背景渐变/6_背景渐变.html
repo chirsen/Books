@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style> 
+    @keyframes big{
+        0%{
+            background-size: 100%;
+            background-image: url("pgy.jpg");
+        }
+        33%{
+            background-size: 120%;
+            background-image: url("pgy.jpg");
+        }
+        34%{
+            background-size: 120%;
+            background-image: url("pgy1.jpg");
+        }
+        66%{
+            background-size: 100%;
+            background-image: url("pgy1.jpg");
+        }
+        67%{
+            background-size: 100%;
+            background-image: url("pgy2.jpg");
+        }
+        100%{
+            background-size: 120%;
+             background-image: url("pgy2.jpg");
+        }
+    }
+
+    .wrap{
+        width: 80%;
+        height: 400px;
+        background: url("pgy.jpg") no-repeat;
+        animation:big 10s steps(10000) infinite;
+    }
+    </style>
+</head>
+<body>
+    <div class="wrap"></div>
+</body>
+</html>

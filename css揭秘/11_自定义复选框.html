@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复选框</title>
+    <style>
+        input[type='checkbox']+label:before{
+            content: '\a0';
+            display: inline-block;
+            width: .8em;
+            height: .8em;
+            margin-right: .2em;
+            border-radius: .2em;
+            background: silver;
+            text-indent: .15em;
+            line-height: .65;
+        }
+        input[type='checkbox']:checked+label:before{
+            content: '\2713';
+            background: yellowgreen;
+        }
+        input[type="checkbox"]{
+            position: absolute;
+            clip: rect(0,0,0,0);
+        }
+        label{
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="check">
+    <label for="check">check</label>
+    <br>
+    <input type="checkbox" id="check2">
+    <label for="check2">check</label>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>毛玻璃效果</title>
+    <style>
+       body{
+           padding: 0px;
+           margin: 0px;
+           background: url(back.jpeg);
+       }
+        .main{
+            position: relative;
+            background: rgba(255, 255, 255, .5);
+            height: 300px;
+            width: 400px;
+            top: 200px;
+            left: 300px;
+        }
+        .main:before{
+            content: "";
+            position: absolute;
+            top: 0px;left: 0px;right: 0px;bottom: 0px;
+            background: url(back.jpeg) 0 / cover fixed;
+            filter: blur(20px);
+            z-index: -1;
+            overflow: hidden;
+            margin: -20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+            这傻啥的发生大手动阀手动阀啊手动阀手动阀啊手动阀实打实的
+    </div>
+</body>
+</html>

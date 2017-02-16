@@ -1,12 +1,12 @@
 /*继承*/
-function Employee(){
+function Employee() {
 	this.dept = "general";
 }
 //可在子类实例运行完成后进行更改
 Employee.prototype.name = "init";
 
 
-function WorkerBee(){
+function WorkerBee() {
 	this.projects = [];
 }
 WorkerBee.prototype = new Employee;
@@ -26,11 +26,11 @@ console.log(amy.name);
 
 
 /*forEach 对象复制函数*/
-function copy(obj){
+function copy(obj) {
 	var copy = Object.create(Object.getPrototypeOf(obj));
 	var protoNames = Object.getOwnPropertyNames(obj);
 
-	protoNames.forEach(function(name){
+	protoNames.forEach(function (name) {
 		var desc = Object.getOwnPropertyDescriptor(obj, name);
 		Object.defineProperty(copy, name, desc);
 	});

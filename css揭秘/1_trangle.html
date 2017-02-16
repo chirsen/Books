@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>使用inherite属性的小三角</title>
+    <style>
+        .callout {
+            position: relative;
+            background-color: #aaa;
+            height: 100px;
+            width: 200px;
+            border-radius: 10px;
+        }
+        
+        .callout:before {
+            content: "";
+            position: absolute;
+            top: -.4em; left: 1em;
+            background: inherit;
+            border: inherit;
+            padding: .35em;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="callout">
+        this is trangle test
+    </div>
+</body>
+
+</html>

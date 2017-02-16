@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>根据子元素数量显示样式</title>
+    <style>
+        /*子元素为3~6个时，背景为灰色*/
+        li:first-child:nth-last-child(n+4):nth-last-child(-n+6),
+        li:first-child:nth-last-child(n+4):nth-last-child(-n+6) ~ li{
+            background-color: #eee;
+        }
+        /*子元素3个时，背景为蓝色*/
+        li:first-child:nth-last-child(n+3),
+        li:first-child:nth-last-child(n+3) ~ li{
+            background-color: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1 item</li>
+        <li>2 item</li>
+        <li>3 item</li>
+        <li>4 item</li>
+    </ul>
+    <ul>
+        <li>1 item</li>
+        <li>2 item</li>
+        <li>3 item</li>
+        <li>4 item</li>
+        <li>5 item</li>
+        <li>6 item</li>
+    </ul>
+    <ul>
+        <li>1 item</li>
+        <li>2 item</li>
+        <li>3 item</li>
+    </ul>
+</body>
+</html>

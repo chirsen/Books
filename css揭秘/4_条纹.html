@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>条纹背景</title>
+    <style>
+        .wrap{
+            /*横向条纹*/
+            height: 100px;
+            width: 300px;
+            background: linear-gradient( #fb3 50%, #58a 0);
+            background-size: 100% 20px;
+        }
+        .wrap{
+            /*斜向条纹1*/
+            height: 100px;
+            width: 300px;
+            background: repeating-linear-gradient(45deg, #fb3,#fb3 20px, #58a 20px, #58a 40px);
+        }
+        .wrap{
+            /*斜向条纹2*/
+            height: 100px;
+            width: 300px;
+            background: linear-gradient(45deg, #fb3 50%, #58a 0);
+            background-size: 20px 20px;
+        }
+        .wrap{
+            /*斜向条纹3*/
+            height: 100px;
+            width: 300px;
+            background: linear-gradient(45deg, #fb3 25%, #58a 0, #58a 50%, #fb3 0, #fb3 75%, #58a 0 );
+            background-size: 40px 40px;
+        }
+        .wrap{
+            /*竖向条纹*/
+            height: 100px;
+            width: 300px;
+            background: linear-gradient(to right, #fb3 50%, #58a 0);
+            background-size: 20px 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+    </div>
+    
+</body>
+
+</html>

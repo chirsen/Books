@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>浮动闭合（清除）</title>
+    <style>
+        .wrap {
+            min-height: 10px;
+            width: 500px;
+            margin: 20px auto;
+            border: 1px solid cornflowerblue;
+            padding: 10px;
+        }
+        
+        .content {
+            float: right;
+            min-height: 100px;
+            width: 200px;
+            background: palevioletred;
+            color: white;
+        }
+        
+        .clearfix1 {
+            overflow: hidden;
+            /*ie6以下*/
+            *zoom: 1;
+        }
+        
+        .clearfix2 {
+            overflow: hidden;
+            /*ie6以下*/
+            *zoom: 1;
+        }
+        
+        .clearfix3 {
+            display: table;
+        }
+        /* For modern browsers */
+        
+        .cf:before,
+        .cf:after {
+            content: "";
+            display: block;
+        }
+        
+        .cf:after {
+            clear: both;
+        }
+        /* For IE 6/7 (trigger hasLayout) */
+        
+        .cf {
+            zoom: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap clearfix">
+        ***推荐做法：
+        <div class="content ">
+            父元素添加，:after伪元素
+        </div>
+    </div>
+    <p>
+
+    </p>
+    <div class="wrap">
+        1.
+        <div class="content">
+            添加一个br标签，使用它的clear属性
+        </div>
+        <br clear="both">
+    </div>
+    <div class="wrap clearfix1">
+        2.
+        <div class="content ">
+            父标签添加 overflow:hidden<br><br> 内容增多时，容易造成不会自动换行导致内容被隐藏掉，无法显示需要溢出的元素；
+        </div>
+    </div>
+    <div class="wrap clearfix2">
+        3.
+        <div class="content ">
+            父标签添加<br> overflow:auto<br><br> 多个嵌套后，firefox某些情况会造成内容全选；
+            <br>IE中 mouseover 造成宽度改变时会出现最外层模块有滚动条等，
+        </div>
+    </div>
+    <div class="wrap clearfix3">
+        4.
+        <div class="content ">
+            父标签添加<br> display:table<br><br> 改变了盒模型
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

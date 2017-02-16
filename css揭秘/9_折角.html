@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>折角效果</title>
+    <style>
+    .slice{
+        position: relative;
+        height: 200px;
+        width: 400px;
+        background:#58a;
+        background: linear-gradient(-150deg, transparent 1.5em, #58a 0);
+    }
+    .slice:after{
+        content: "";
+        position: absolute;
+        top: 0; right: 0;
+        background: linear-gradient(to left bottom, transparent 50%, rgba(0, 0, 0, .4) 0) no-repeat 100% 0;
+        width: 1.73em;
+        height: 3em;
+        transform-origin: right bottom;
+        /*先平移再旋转（旋转会旋转坐标轴）*/
+        transform: translateY(-1.3em) rotate(-30deg);
+    }
+    </style>
+</head>
+<body>
+    <div class="slice">
+        
+    </div>
+</body>
+</html>

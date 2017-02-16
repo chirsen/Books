@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用一个元素实现的，背景图片可伸缩的， border image</title>
+    <style>
+        .wrap{
+            min-height: 200px;
+            width: 200px;
+            padding: 1em;
+            border: 1em solid transparent;
+            background:   linear-gradient(white, white), url(back.jpeg);
+            background-size: cover;
+            background-clip: padding-box, border-box;
+            background-origin: border-box;
+        }
+        @keyframes ant{
+            to {background-position: 100%;}
+        }
+        .ants{
+            width: 200px;
+            min-height: 200px;
+            padding: 1em;
+            border: 2px solid transparent;
+            background: linear-gradient(white, white) padding-box ,repeating-linear-gradient(-45deg,black 0, black 25%, white 0, white 50%) 0 / .6em .6em;
+            animation: ant 12s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        this is content
+    </div>
+    
+    <div class="ants">
+        蚂蚁行军
+    </div>
+</body>
+</html>

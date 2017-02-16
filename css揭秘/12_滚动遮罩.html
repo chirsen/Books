@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>滚动列表的上下遮罩</title>
+    <style>
+        ul{
+            width: 100px;
+            height: 200px;
+            border: solid 1px #eee;
+            overflow: auto;
+            background: linear-gradient(to top, white 30%, transparent), 
+                        radial-gradient(at bottom, rgba(0, 0, 0, .3), transparent 70%),
+                        linear-gradient(white 30%, transparent),
+                        radial-gradient(at top, rgba(0, 0, 0, .3), transparent 70%);
+            background-repeat: no-repeat;
+            background-size: 100% 15px;
+            background-position: 0px 100%, 0px 100%, 0 0, 0 0;
+            background-attachment: local, scroll, local, scroll;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1 item</li>
+        <li>2 item</li>
+        <li>3 item</li>
+        <li>4 item</li>
+        <li>5 item</li>
+        <li>6 item</li>
+        <li>7 item</li>
+        <li>8 item</li>
+        <li>9 item</li>
+        <li>10 item</li>
+        <li>11 item</li>
+        <li>12 item</li>
+        <li>13 item</li>
+        <li>14 item</li>
+        <li>15 item</li>
+        <li>16 item</li>
+        <li>17 item</li>
+        <li>18 item</li>
+        <li>19 item</li>
+        <li>20 item</li>
+    </ul>
+</body>
+</html>
