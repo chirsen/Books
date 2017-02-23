@@ -81,7 +81,7 @@ var proxy = new Proxy(obj, {
 });
 
 //set拦截某个属性的赋值操作（可用于输入检测和过滤）
-let obj = new Proxy({}, {
+obj = new Proxy({}, {
     set(target, prop, value, reciver){
         if(value < 0){
             console.log("该属性不能小于0");
@@ -111,4 +111,35 @@ inProp._a = 12;  //Invalid attempt to set private "_a" property
 
 /***
  * Proxy的apply方法，拦截函数的调用，call，apply
+ * Reflect的apply，相当于Function.prototype.apply.call(target, context, arguments)
+ */
+var target = function(){return 'this is target';};
+var handler = {
+    apply(target, ctx, args){
+        console.log("this is proxy");
+        //如果不返回，不会打印函数结果
+        return Reflect.apply(target, ctx, args);
+    }
+};
+var proxy = new Proxy(target, handler);
+console.log(proxy());
+
+/**
+ * Proxy has(target, key)方法，拦截Reflext.has操作或者 prop in Obj的操作(注意，拦截对for...in不生效)
+ * Reflect.has(target, key) 相当于in操作
+ */
+var proxyObj = Object.create(new Proxy({
+    a : 100
+}, {
+    has(target, key){
+        console.log(key);
+        return Reflect.has(target, key);
+    }
+}));
+
+console.log("a" in proxyObj );
+console.log(Reflect.has(proxyObj, "a"));
+
+/**
+ * Proxy 的construct() 方法，拦截函数的new操作，可以于初始化对象
  */
