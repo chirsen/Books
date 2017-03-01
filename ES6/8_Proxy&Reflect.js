@@ -142,4 +142,23 @@ console.log(Reflect.has(proxyObj, "a"));
 
 /**
  * Proxy 的construct() 方法，拦截函数的new操作，可以于初始化对象
+ * Reflect 的construct 属性，跟调用new操作一样
+ */
+var p = new Proxy(function(name){
+    this.name = name;
+}, {
+    construct(target, args){
+        console.log("calls ");
+        args[0] += "lalala";
+        //一定要返回一个对象，否则报错
+        return Reflect.construct(target, args);
+    }
+});
+
+console.log((new p("hello")).name);
+
+/**
+ * 余下还有 ： 
+ *          defineProperty(target, key, descriptor), getOwnPropertyDescriptor(target, key),getPropertyOf(target)等方法
+ *          跟Reflect对应。参考http://es6.ruanyifeng.com/#docs/proxy
  */
