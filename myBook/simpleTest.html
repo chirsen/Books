@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Test</title>
+    <style>
+        ul{
+            margin: 0;
+            padding-left: 0;
+        }
+        li{
+            height: 20px;
+            line-height: 20px;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+        .pass{
+            background: green;
+            color: white;
+        }
+        .fail{
+            background: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    assert Test
+    <ul id="result"></ul>
+    <script>
+        function assert(value, descript){
+            var ul = document.querySelector('#result');
+            var li = document.createElement('li');
+            li.className = value ? 'pass' : 'fail';
+            li.innerHTML = descript;
+            ul.appendChild(li);
+        }
+
+        window.onload = function() {
+            assert(true, '这是正确的');
+            assert(false, '这是错误的');
+        }
+    </script>
+</body>
+</html>

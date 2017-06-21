@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Test</title>
+    <style>
+        ul{
+            margin: 0;
+        }
+        li{
+            font-size: 14px;
+            margin: 5px 0;
+        }
+        .pass{
+            background: green;
+            color: white;
+        }
+        
+        .fail{
+            background: red;
+            color: white;
+        }
+        .total-pass{
+            background: green;
+        }
+        .some-fail{
+            background: #aaa;
+        }
+    </style>
+</head>
+<body>
+    assert Test
+    <ul id="result"></ul>
+    <script>
+        (function(){
+            var container, result = true;
+            window.assert = function assert(value, descript){
+                var li = document.createElement('li');
+                li.className = value ? 'pass' : ('fail');
+                if(!value) {
+                    result = false;
+                }
+                container.appendChild(li);
+                li.appendChild(document.createTextNode(descript));
+                return li;
+            }
+            window.test = function test(name, fn){
+                var ul = document.createElement('ul');
+                container = document.querySelector('#result');
+                assert(true, name).appendChild(ul)
+                container = ul;
+                ul.className = !result ? 'total-pass' : 'some-fail';
+                fn();
+            }
+        })();
+
+        window.onload =function(){
+            test('test1', function(){
+                assert(true, 'true');
+                assert(false, 'false');
+                assert(true, 'true');
+            });
+            test('test2', function(){
+                assert(true, 'true');
+                assert(true, 'true');
+                assert(true, 'true');
+            });
+        };
+    </script>
+</body>
+</html>

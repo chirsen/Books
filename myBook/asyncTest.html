@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Test</title>
+    <style>
+        ul{
+            margin: 0;
+        }
+        li{
+            font-size: 14px;
+            margin: 5px 0;
+        }
+        .pass{
+            background: green;
+            color: white;
+        }
+        
+        .fail{
+            background: red;
+            color: white;
+        }
+        .total-pass{
+            background: green;
+        }
+        .some-fail{
+            background: #aaa;
+        }
+    </style>
+</head>
+<body>
+    assert Test
+    <ul id="result"></ul>
+    <script>
+        // 主要是暂停，启动的不同时机
+        // 按照代码的先后顺序排队，通过状态（paused）判断开始还是执行；
+        // 前一个执行完成唤起下一个。
+        (function(){
+            var container, 
+                result = true,
+                queen = [],
+                paused = false;
+
+            window.assert = function assert(value, descript){
+                var li = document.createElement('li');
+                li.className = value ? 'pass' : ('fail');
+                if(!value) {
+                    result = false;
+                }
+                container.appendChild(li);
+                li.appendChild(document.createTextNode(descript));
+                return li;
+            }
+            window.asynTest = function asynTest(name, fn){
+                queen.push(function () {
+                    var ul = document.createElement('ul');
+                    container = document.querySelector('#result');
+                    assert(true, name).appendChild(ul)
+                    container = ul;
+                    ul.className = !result ? 'total-pass' : 'some-fail';
+                    fn();
+                });
+                runTest();
+            }
+            window.resume =function () {
+                paused = false;
+                setTimeout(runTest, 1);
+            }
+            window.paused =function () {
+                paused = true;
+            }
+            window.runTest =function() {
+                if (!paused && queen.length) {
+                    queen.shift()();
+                    if(!paused) {
+                        resume();
+                    }
+                }
+            }
+        })();
+
+        window.onload =function(){
+            asynTest('test1', function(){
+                paused();
+                setTimeout(function(){
+                    assert(true, 'test1');
+                    resume();
+                }, 1000); 
+            });
+            asynTest('test2', function(){
+                paused();
+                setTimeout(function(){
+                    assert(false, 'test2');
+                    resume();
+                }, 1000);   
+            });
+        };
+    </script>
+</body>
+</html>
